@@ -5,7 +5,7 @@ const generateManager = function (manager) {
         <div class="card h-100">
             <div class="card-header">
                 <h3>${manager.name}</h3>
-                <h4>Manager</h4><i class="material-icons">content_paste</i>
+                <i class="material-icons">coffee</i><h3 style="display:inline-block;"> Manager</h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${manager.id}</p>
@@ -24,7 +24,7 @@ const generateEngineer = function (engineer) {
         <div class="card h-100">
             <div class="card-header">
                 <h3>${engineer.name}</h3>
-                <h4>Engineer</h4><i class="material-icons">laptop_mac</i>
+                <i class="material-icons">build</i><h3 style="display:inline-block;"> Engineer</h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${engineer.id}</p>
@@ -43,7 +43,7 @@ const generateIntern = function (intern) {
         <div class="card h-100">
             <div class="card-header">
                 <h3>${intern.name}</h3>
-                <h4>Intern</h4><i class="material-icons">assignment_ind</i>
+                <i class="material-icons">school</i><h3 style="display:inline-block;"> Intern</h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${intern.id}</p>
@@ -54,59 +54,39 @@ const generateIntern = function (intern) {
 </div>
     `
 };
-
-// push array to page 
 generateHTML = (data) => {
 
-    // array for cards 
-    pageArray = []; 
-
+    page = []; 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
         const role = employee.getRole(); 
-
-
-        // call manager function
         if (role === 'Manager') {
             const managerCard = generateManager(employee);
 
-            pageArray.push(managerCard);
+            page.push(managerCard);
         }
-
-        // call engineer function
         if (role === 'Engineer') {
             const engineerCard = generateEngineer(employee);
-
-            pageArray.push(engineerCard);
+            page.push(engineerCard);
         }
-
-        // call intern function 
         if (role === 'Intern') {
             const internCard = generateIntern(employee);
-
-            pageArray.push(internCard);
+            page.push(internCard);
         }
-        
     }
-
-    // joining strings 
-    const employeeCards = pageArray.join('')
-
-    // return to generated page
-    const generateTeam = generateTeamPage(employeeCards); 
+    const employeeCards = page.join('')
+    const generateTeam = generatePage(employeeCards); 
     return generateTeam;
-
 }
 
-// generate html page 
-const generateTeamPage = function (employeeCards) {   
+const generatePage = function (employeeCards) {   
   return`
   <!DOCTYPE html>
   <html lang="en">
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Team Profile</title>
+      <title>My Team</title>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
       <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -116,7 +96,7 @@ const generateTeamPage = function (employeeCards) {
   <body>
       <header>
           <nav class="navbar" id="navbar">
-              <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">Team Profile</span>
+              <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text">My Team</span>
           </nav>
       </header>
       <main>
@@ -135,6 +115,4 @@ const generateTeamPage = function (employeeCards) {
   </html>
 `;
 }
-
-// export to index
 module.exports = generateHTML; 

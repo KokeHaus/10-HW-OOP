@@ -1,0 +1,21 @@
+#navbar{
+    background-color: salmon;
+    color: white;
+    margin:0;
+    padding:0;
+    height:100px;
+}
+
+#navbar-text{
+    font-size:32px;
+}
+
+.card-header {
+    background-color: royalblue;
+    color: white;
+    display:inline;
+}
+
+.card-body {
+
+}
